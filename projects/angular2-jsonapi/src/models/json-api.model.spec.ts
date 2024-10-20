@@ -3,9 +3,10 @@ import { parseISO } from 'date-fns/parseISO';
 import { Author } from '../../test/models/author.model';
 import { AUTHOR_ID, BOOK_PUBLISHED, BOOK_TITLE, CHAPTER_TITLE, getAuthorData, getIncludedBooks } from '../../test/fixtures/author.fixture';
 import { Book } from '../../test/models/book.model';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Datastore } from '../../test/datastore.service';
 import { Chapter } from '../../test/models/chapter.model';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('JsonApiModel', () => {
   let datastore: Datastore;
@@ -13,13 +14,13 @@ describe('JsonApiModel', () => {
   beforeEach(() => {
 
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule,
-      ],
-      providers: [
-        Datastore
-      ]
-    });
+    imports: [],
+    providers: [
+        Datastore,
+        provideHttpClient(),
+        provideHttpClientTesting()
+    ]
+});
 
     datastore = TestBed.inject(Datastore);
   });
