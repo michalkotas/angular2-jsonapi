@@ -1,3 +1,8 @@
+# [18.0.1]
+
+  * Remove `providedIn` from `JsonApiDatastore` service (cause it's not needed)
+  * Correct documentation
+
 # [18.0.0]
 
   * Update to Angular 18

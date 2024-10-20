@@ -65,22 +65,11 @@ To install this library, run:
 $ npm install @michalkotas/angular2-jsonapi --save
 ```
 
-Add the `JsonApiModule` to your app module imports:
-```typescript
-import { JsonApiModule } from '@michalkotas/angular2-jsonapi';
+### Migrate to version 18+
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    JsonApiModule
-  ],
-  declarations: [
-    AppComponent
-  ],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
+Version 18 does not expose the module because it has been removed. Therefore, you need to remove all imports of the `JsonApiModule`.
+
+Additionally, ensure that `HttpClientModule` is provided in your application, as it was previously imported and re-exported by `JsonApiModule`.
 
 ### Angular CLI configuration (for CLI 8.1+)
 
