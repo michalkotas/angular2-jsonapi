@@ -23,9 +23,7 @@ export type ModelType<T extends JsonApiModel> = new(datastore: JsonApiDatastore,
  */
 const AttributeMetadataIndex: string = AttributeMetadata as any;
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class JsonApiDatastore {
 
   protected config: DatastoreConfig;
