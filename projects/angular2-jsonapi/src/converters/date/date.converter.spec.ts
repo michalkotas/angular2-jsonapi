@@ -1,5 +1,5 @@
 import { DateConverter } from './date.converter';
-import { parseISO } from 'date-fns';
+import { parseISO } from 'date-fns/parseISO';
 
 describe('Date converter', () => {
   const converter: DateConverter = new DateConverter();

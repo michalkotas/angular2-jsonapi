@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { parseISO } from 'date-fns';
+import { parseISO } from 'date-fns/parseISO';
 import { Author } from '../../test/models/author.model';
 import { AUTHOR_ID, BOOK_PUBLISHED, BOOK_TITLE, CHAPTER_TITLE, getAuthorData, getIncludedBooks } from '../../test/fixtures/author.fixture';
 import { Book } from '../../test/models/book.model';
