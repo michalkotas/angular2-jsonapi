@@ -1,3 +1,9 @@
+# [17.0.0]
+
+  * Update to Angular 17
+  * Update dependencies
+  * Switch back to `reflect-metadata`
+
 # [8.0.0]
 
   * Restructured library to follow Angular standards
