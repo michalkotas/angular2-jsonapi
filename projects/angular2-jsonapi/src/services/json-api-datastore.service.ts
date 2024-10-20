@@ -23,14 +23,16 @@ export type ModelType<T extends JsonApiModel> = new(datastore: JsonApiDatastore,
  */
 const AttributeMetadataIndex: string = AttributeMetadata as any;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class JsonApiDatastore {
 
   protected config: DatastoreConfig;
   private globalHeaders: HttpHeaders;
   private globalRequestOptions: object = {};
   private internalStore: { [type: string]: { [id: string]: JsonApiModel } } = {};
-  private toQueryString: (params: any) => string = this.datastoreConfig.overrides
+  private toQueryString: (params: Record<string, unknown>) => string = this.datastoreConfig.overrides
   && this.datastoreConfig.overrides.toQueryString ?
     this.datastoreConfig.overrides.toQueryString : this._toQueryString;
 
@@ -79,7 +81,7 @@ export class JsonApiDatastore {
    */
   query<T extends JsonApiModel>(
     modelType: ModelType<T>,
-    params?: any,
+    params?: Record<string, unknown>,
     headers?: HttpHeaders,
     customUrl?: string
   ): Observable<T[]> {
@@ -94,7 +96,7 @@ export class JsonApiDatastore {
 
   public findAll<T extends JsonApiModel>(
     modelType: ModelType<T>,
-    params?: any,
+    params?: Record<string, unknown>,
     headers?: HttpHeaders,
     customUrl?: string
   ): Observable<JsonApiQueryData<T>> {
@@ -111,7 +113,7 @@ export class JsonApiDatastore {
   public findRecord<T extends JsonApiModel>(
     modelType: ModelType<T>,
     id: string,
-    params?: any,
+    params?: Record<string, unknown>,
     headers?: HttpHeaders,
     customUrl?: string
   ): Observable<T> {
@@ -132,7 +134,7 @@ export class JsonApiDatastore {
   public saveRecord<T extends JsonApiModel>(
     attributesMetadata: any,
     model: T,
-    params?: any,
+    params?: Record<string, unknown>,
     headers?: HttpHeaders,
     customUrl?: string
   ): Observable<T> {
@@ -233,7 +235,7 @@ export class JsonApiDatastore {
 
   protected buildUrl<T extends JsonApiModel>(
     modelType: ModelType<T>,
-    params?: any,
+    params?: Record<string, unknown>,
     id?: string,
     customUrl?: string
   ): string {
