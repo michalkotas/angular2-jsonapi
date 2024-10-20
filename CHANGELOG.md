@@ -1,3 +1,11 @@
+# [18.0.0]
+
+  * Update to Angular 18
+  * Update dependencies
+  * Remove `JsonApiModule` module
+  * Use `providedIn` for `JsonApiDatastore` service
+  * Use `Record` type for `params`
+
 # [17.0.0]
 
   * Update to Angular 17
