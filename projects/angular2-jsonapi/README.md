@@ -7,6 +7,8 @@ Fork of the [angular2-jsonapi](https://github.com/ghidoz/angular2-jsonapi) repo.
 
 A lightweight Angular 2 adapter for [JSON API](http://jsonapi.org/)
 
+
+
 ## Table of Contents
 - [Introduction](#Introduction)
 - [Installation](#installation)
@@ -63,22 +65,34 @@ To install this library, run:
 $ npm install @michalkotas/angular2-jsonapi --save
 ```
 
-Add the `JsonApiModule` to your app module imports:
-```typescript
-import { JsonApiModule } from '@michalkotas/angular2-jsonapi';
+### Migrate to version 18+
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    JsonApiModule
-  ],
-  declarations: [
-    AppComponent
-  ],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+Version 18 does not expose the module because it has been removed. Therefore, you need to remove all imports of the `JsonApiModule`.
+
+Additionally, ensure that `HttpClientModule` is provided in your application, as it was previously imported and re-exported by `JsonApiModule`.
+
+### Angular CLI configuration (for CLI 8.1+)
+
+Beginning from Angular CLI 8.1 the `tsconfig.json` does not sets the `emitDecoratorMetadata` option (see https://blog.ninja-squad.com/2019/07/03/angular-cli-8.1/#typescript-configuration-changes). But we need it to read the metadata from the models. So make sure to update your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+  }
+}
 ```
+
+### Notice for `es2015` compilation
+
+Beginning with Angular 8 the default compile target will be `es2015` (in `tsconfig.json`). 
+Make sure to add this line in your `src/polyfills.ts` as we need it to read metadata from the models:
+
+```typescript
+import 'core-js/proposals/reflect-metadata';
+```
+
+**Warning**: If you have circular dependencies in your model definitions (see https://github.com/ghidoz/angular2-jsonapi/issues/236#issuecomment-519473153 for example), you need to change the compile target to `es5` as this lead to runtime errors `ReferenceError: Cannot access 'x' before initialization` (see https://github.com/angular/angular/issues/30106#issuecomment-497699838).
 
 ## Usage
 
