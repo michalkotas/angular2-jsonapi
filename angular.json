@@ -23,7 +23,7 @@
             "polyfills": [
               "zone.js",
               "zone.js/testing",
-              "@abraham/reflection"
+              "reflect-metadata"
             ],
             "karmaConfig": "projects/angular2-jsonapi/karma.conf.js"
           }
