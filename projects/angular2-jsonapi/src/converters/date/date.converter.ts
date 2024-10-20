@@ -1,4 +1,4 @@
-import { parseISO } from 'date-fns';
+import { parseISO } from 'date-fns/parseISO';
 import { PropertyConverter } from '../../interfaces/property-converter.interface';
 
 export class DateConverter implements PropertyConverter {

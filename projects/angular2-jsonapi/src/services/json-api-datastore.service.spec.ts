@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { parseISO } from 'date-fns';
+import { parseISO } from 'date-fns/parseISO';
 import { Author } from '../../test/models/author.model';
 import { Chapter } from '../../test/models/chapter.model';
 import { AUTHOR_API_VERSION, AUTHOR_MODEL_ENDPOINT_URL, CustomAuthor } from '../../test/models/custom-author.model';
